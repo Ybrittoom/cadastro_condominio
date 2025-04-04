@@ -1,0 +1,8 @@
+FUNCIONALIDADES: Cadastro de moradores (com dados pessoais, apartamento, veículos), 
+                 cadastro de visitantes,
+                 controle de acesso (integração com portaria, se aplicável),
+                 agendamento de áreas comuns (salão de festas, churrasqueira),
+                 registro de ocorrências,
+                 emissão de boletos (integração com APIs de pagamento),
+                 gestão de funcionários,
+                 relatórios (moradores inadimplentes, histórico de acesso, etc.).
