@@ -1,0 +1,63 @@
+create database condominio
+
+
+create table moradores (
+	id int not null auto_increment,
+	nome varchar(255) not null,
+	idade int not null,
+	email varchar(500),
+	telefone varchar(11),
+	cpf varchar(11),
+	sexo boolean,
+	estado_civil ENUM('solteiro', 'casado', 'divorciado', 'viuvo'),
+	bloco int(1),
+	andar int(2),
+	ape int(3),
+	primary key(id)
+);
+
+create table ape (
+	id int not null auto_increment,
+	bloco int(1) not null,
+	andar int(2) not null,
+	apartemento int(3) not null,
+	garagem int(3) not null,
+	primary key(id)
+);
+
+
+INSERT INTO moradores (nome, idade, email, telefone, cpf, sexo, estado_civil, bloco, andar, ape) VALUES
+('João Silva', 35, 'joao.silva@email.com', '11999998888', '12345678901', 1, 'casado', 1, 10, 101),
+('Maria Souza', 28, 'maria.souza@email.com', '11988887777', '98765432109', 0, 'solteiro', 1, 10, 101),
+('Pedro Oliveira', 42, 'pedro.oliveira@email.com', '21977776666', '11122233344', 1, 'divorciado', 2, 5, 205),
+('Ana Rodrigues', 31, 'ana.rodrigues@email.com', '15966665555', '55544433322', 0, 'casado', 1, 12, 122),
+('Carlos Pereira', 25, 'carlos.pereira@email.com', '19955554444', '66677788899', 1, 'solteiro', 3, 2, 302);
+
+INSERT INTO ape (bloco, andar, apartemento, garagem) VALUES
+(1, 10, 101, 1),
+(1, 12, 122, 2),
+(2, 5, 205, 3),
+(3, 2, 302, 4),
+(1, 10, 102, 5); -- Apartamento sem morador correspondente
+
+
+
+SELECT
+    m.nome AS nome_morador,
+    m.idade,
+    m.email,
+    m.telefone,
+    m.cpf,
+    CASE m.sexo WHEN 1 THEN 'Masculino' ELSE 'Feminino' END AS sexo,
+    m.estado_civil,
+    m.bloco AS bloco_morador,
+    m.andar AS andar_morador,
+    m.ape AS ape_morador,
+    a.bloco AS bloco_ape,
+    a.andar AS andar_ape,
+    a.apartemento AS numero_ape,
+    a.garagem
+FROM
+    moradores m
+INNER JOIN
+    ape a ON m.bloco = a.bloco AND m.andar = a.andar AND m.ape = a.apartemento;
