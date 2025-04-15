@@ -1,10 +1,9 @@
+//db.js
 const mysql = require('mysql2');
-require('dotenv').config();
 
-const pool = mysql.createPool({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    database: process.env.DB_NAME
+const conexao = mysql.createConnection({
+    host: 'localhost', 
+    port: 3306,
+    user: 'root',
+    database: 'condominio'
 })
-
-module.exports = pool.promise()

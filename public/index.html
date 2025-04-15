@@ -6,6 +6,32 @@
     <title>Document</title>
 </head>
 <body>
-    <h2>teste</h2>
+    <h1>Cadastrar Morador</h1>
+    <form id="formCadastro">
+        <input type="text" name="nome" placeholder="nome">
+        <input type="text" name="idade" placeholder="idade">
+        <input type="text" name="email" placeholder="email">
+        <input type="text" name="telefone" placeholder="telefone">
+        <input type="text" name="cpf" placeholder="cpf">
+        <select name="sexo">
+            <option value="Masculino">Masculino</option>
+            <option value="Feminino">Feminino</option>
+        </select>
+        <select name="estado_civil">
+            <option value="solteiro">solteiro</option>
+            <option value="casado">casado</option>
+            <option value="divorciado">divorciado</option>
+            <option value="viuvo">viuvo</option>
+        </select>
+        <input type="text" name="bloco" placeholder="bloco">
+        <input type="text" name="andar" placeholder="andar">
+        <input type="text" name="ape" placeholder="ape">
+        <button type="submit">Cadastrar</button>
+    </form>
+
+    <h2>Moradores</h2>
+    <ul id="listaMoradores"></ul>
+
+    <script src="script.js"></script>
 </body>
 </html>
