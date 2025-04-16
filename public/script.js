@@ -7,15 +7,19 @@ async function listarMoradores() {
     const lista = document.getElementById('listaMoradores')
     lista.innerHTML = ''
 
-    data.forEach(m => {
-        const li = document.createElement('li')
-        li.innerHTML = `
-            ${m.nome} (${m.idade} anos) - Apartamento ${m.ape}
-            <button onclick = "remover(${m.id})">Remover</button>
-            <button onclick = 'editar(${JSON.stringify(m)})'>Editar</button>
-        `
-        lista.appendChild(li)
-    });
+    if (Array.isArray(data)) {
+        data.forEach(m => {
+            const li = document.createElement('li')
+            li.innerHTML = `
+                ${m.nome} (${m.idade} anos) - Apartamento ${m.ape}
+                <button onclick="remover(${m.id})">Remover</button>
+                <button onclick='editar(${JSON.stringify(m)})'>Editar</button>
+            `
+            lista.appendChild(li)
+        })
+    } else {
+        console.error('Resposta inválida da API:', data)
+    }
 }
 
 document.getElementById('formCadastro').addEventListener('submit', async (e) => {

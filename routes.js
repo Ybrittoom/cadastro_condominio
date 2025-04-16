@@ -3,6 +3,14 @@ const express = require('express')
 const router = express.Router()
 const db = require('./db')
 
+console.log('Tipo de db.query:', typeof db.query)
+
+
+console.log('Arquivo DB carregado de:', require.resolve('./db'))
+
+console.log('Tipo de db:', typeof db)
+console.log('Tem função query?', typeof db.query)
+
 // GET - Buscar todos os moradores + info do ape
 router.get('/moradores', async (req, res) => {
     try {
@@ -12,7 +20,7 @@ router.get('/moradores', async (req, res) => {
                 CASE m.sexo WHEN 1 THEN 'Masculino' ELSE 'Feminino' END AS sexo_formatado,
                 a.apartamento, a.garagem
             FROM moradores m
-            JOIN ape a ON m.bloco = a.bloco AND m.andar = a.andar AND m.ape = a.apartemento
+            JOIN ape a ON m.bloco = a.bloco AND m.andar = a.andar AND m.ape = a.apartamento
             `)
         res.json(rows)
     } catch (error) {
@@ -68,7 +76,8 @@ router.post('/moradores', async (req, res) => {
                 sexo,
                 estado_civil,
                 bloco,
-                andar
+                andar,
+                ape
             ]
         )
         res.json({ id: result.insertId })

@@ -1,9 +1,12 @@
-//db.js
-const mysql = require('mysql2');
+const mysql = require('mysql2/promise')
 
-const conexao = mysql.createConnection({
-    host: 'localhost', 
-    port: 3306,
+const pool = mysql.createPool({
+    host: '127.0.0.1',
     user: 'root',
-    database: 'condominio'
+    database: 'condominio',
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0
 })
+
+module.exports = pool
