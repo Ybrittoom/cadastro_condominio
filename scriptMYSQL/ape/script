@@ -20,7 +20,7 @@ create table ape (
 	id int not null auto_increment,
 	bloco int(1) not null,
 	andar int(2) not null,
-	apartemento int(3) not null,
+	apartamento int(3) not null,
 	garagem int(3) not null,
 	primary key(id)
 );

@@ -1,4 +1,4 @@
-const API_URL = '/api/moradores'// esse /api vem do app.use('/api', ...)
+const API_URL = 'http://localhost:3000/api/moradores' // esse /api vem do app.use('/api', ...)
 
 async function listarMoradores() {
     const res = await fetch(API_URL)
@@ -68,6 +68,7 @@ function editar(morador) {
     })
     form.dataset.editando = 'true'
     form.dataset.idEditando = morador.id
+
 }
 
 listarMoradores()
